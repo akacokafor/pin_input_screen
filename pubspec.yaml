@@ -1,8 +1,8 @@
 name: pin_input_screen
 description: Flexible Pin Input Screen
 version: 0.0.1
-author:
-homepage:
+author: Okafor Akachukwu <kasoprecede47@gmail.com>
+homepage: https://github.com/akacokafor/pin_input_screen
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
