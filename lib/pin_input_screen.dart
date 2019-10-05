@@ -3,6 +3,7 @@ library pin_input_screen;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:pin_input_screen/mixin/vibration_mixin.dart';
 
 typedef OnPinCompleteCallback = Future<PinValidationResult> Function(
     String pin);
@@ -41,7 +42,7 @@ class EnterPinScreen extends StatefulWidget {
   _EnterPinScreenState createState() => _EnterPinScreenState();
 }
 
-class _EnterPinScreenState extends State<EnterPinScreen> {
+class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
   bool isWorking = false;
   List<String> pin = List<String>(4);
   int activeIndex = 0;
@@ -194,9 +195,9 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
                 children: <Widget>[
                   Table(
                     columnWidths: {
-                      0: FixedColumnWidth(100),
-                      1: FixedColumnWidth(100),
-                      2: FixedColumnWidth(100),
+                      0: FlexColumnWidth(),
+                      1: FlexColumnWidth(),
+                      2: FlexColumnWidth(),
                     },
                     children: [
                       TableRow(children: [
@@ -371,11 +372,17 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
   bool get isPinValid => pin.map((i) => i != null).reduce((i, j) => i && j);
 
   void _addPin(String num) {
-    if (activeIndex >= pin.length) return;
+    if (activeIndex >= pin.length) {
+      vibrateError();
+      return;
+    }
+
+    vibrate();
 
     setState(() {
       isWorking = false;
     });
+
     errorMsg = "";
 
     pin[activeIndex] = num;
@@ -408,7 +415,10 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
   }
 
   void _submitPin() async {
-    if (!isPinValid) return;
+    if (!isPinValid) {
+      vibrateError();
+      return;
+    }
     setState(() {
       isWorking = true;
     });
@@ -417,11 +427,13 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
       final result = await widget.onPinCompleteCallback(pin.join("").trim());
       if (result.isSuccessful) {
         if (widget.onSuccessful != null) {
+          vibrateSuccess();
           widget.onSuccessful();
         }
       } else {
         errorMsg = result.errorMessage;
         if (widget.onFailure != null) {
+          vibrateError();
           widget.onFailure();
         }
         _resetPin();
