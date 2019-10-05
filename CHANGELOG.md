@@ -5,3 +5,7 @@
 ## [0.0.2] - 05/10/2019
 
 * Vibration on Tap
+
+## [0.0.3] - 05/10/2019
+
+* Fixed Keypad Layout

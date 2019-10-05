@@ -1,9 +1,9 @@
-library pin_input_screen;
+library pin_input_widget;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:pin_input_screen/mixin/vibration_mixin.dart';
+import 'package:pin_input_widget/mixin/vibration_mixin.dart';
 
 typedef OnPinCompleteCallback = Future<PinValidationResult> Function(
     String pin);
@@ -72,6 +72,8 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
 
   @override
   Widget build(BuildContext context) {
+    double _width = (MediaQuery.of(context).size.width / 3) - 20;
+    double _iconSize = 45;
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Theme(
@@ -195,14 +197,14 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                 children: <Widget>[
                   Table(
                     columnWidths: {
-                      0: FlexColumnWidth(),
-                      1: FlexColumnWidth(),
-                      2: FlexColumnWidth(),
+                      0: FixedColumnWidth(_width),
+                      1: FixedColumnWidth(_width),
+                      2: FixedColumnWidth(_width),
                     },
                     children: [
                       TableRow(children: [
                         IconButton(
-                          iconSize: 40,
+                          iconSize: _iconSize,
                           icon: Icon(
                             MaterialCommunityIcons.numeric_1,
                             color: Colors.white,
@@ -212,7 +214,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                           },
                         ),
                         IconButton(
-                          iconSize: 40,
+                          iconSize: _iconSize,
                           icon: Icon(
                             MaterialCommunityIcons.numeric_2,
                             color: Colors.white,
@@ -222,7 +224,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                           },
                         ),
                         IconButton(
-                          iconSize: 40,
+                          iconSize: _iconSize,
                           icon: Icon(
                             MaterialCommunityIcons.numeric_3,
                             color: Colors.white,
@@ -234,7 +236,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                       ]),
                       TableRow(children: [
                         IconButton(
-                          iconSize: 40,
+                          iconSize: _iconSize,
                           icon: Icon(
                             MaterialCommunityIcons.numeric_4,
                             color: Colors.white,
@@ -244,7 +246,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                           },
                         ),
                         IconButton(
-                          iconSize: 40,
+                          iconSize: _iconSize,
                           icon: Icon(
                             MaterialCommunityIcons.numeric_5,
                             color: Colors.white,
@@ -254,7 +256,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                           },
                         ),
                         IconButton(
-                          iconSize: 40,
+                          iconSize: _iconSize,
                           icon: Icon(
                             MaterialCommunityIcons.numeric_6,
                             color: Colors.white,
@@ -267,7 +269,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                       TableRow(
                         children: [
                           IconButton(
-                            iconSize: 40,
+                            iconSize: _iconSize,
                             icon: Icon(
                               MaterialCommunityIcons.numeric_7,
                               color: Colors.white,
@@ -277,7 +279,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                             },
                           ),
                           IconButton(
-                            iconSize: 40,
+                            iconSize: _iconSize,
                             icon: Icon(
                               MaterialCommunityIcons.numeric_8,
                               color: Colors.white,
@@ -287,7 +289,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                             },
                           ),
                           IconButton(
-                            iconSize: 40,
+                            iconSize: _iconSize,
                             icon: Icon(
                               MaterialCommunityIcons.numeric_9,
                               color: Colors.white,
@@ -304,7 +306,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                             height: 45.0,
                           ),
                           IconButton(
-                            iconSize: 40,
+                            iconSize: _iconSize,
                             icon: Icon(
                               MaterialCommunityIcons.numeric_0,
                               color: Colors.white,
@@ -314,7 +316,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
                             },
                           ),
                           IconButton(
-                            iconSize: 40,
+                            iconSize: _iconSize,
                             icon: Padding(
                               padding: const EdgeInsets.only(
                                 top: 5.0,

@@ -1,6 +1,6 @@
-name: pin_input_screen
+name: pin_input_widget
 description: Flexible Pin Input Screen
-version: 0.0.2
+version: 0.0.3
 author: Okafor Akachukwu <okafor.ak@outlook.com>
 homepage: https://github.com/akacokafor/pin_input_screen
 
