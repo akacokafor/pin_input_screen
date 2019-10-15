@@ -1,5 +1,7 @@
 library pin_input_widget;
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -68,6 +70,10 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
     activeIndex = 0;
     isWorking = false;
     errorMsg = "";
+
+    Timer.run(() {
+      FocusScope.of(context).unfocus();
+    });
   }
 
   @override
