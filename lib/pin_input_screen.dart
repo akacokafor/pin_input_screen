@@ -28,6 +28,7 @@ class EnterPinScreen extends StatefulWidget {
   final VoidCallback onLogout;
   final VoidCallback onClose;
   final Widget brandLogo;
+  final Color backgroundColor;
 
   const EnterPinScreen({
     Key key,
@@ -39,6 +40,7 @@ class EnterPinScreen extends StatefulWidget {
     this.onSuccessful,
     this.onClose,
     this.onLogout,
+    this.backgroundColor,
   }) : super(key: key);
   @override
   _EnterPinScreenState createState() => _EnterPinScreenState();
@@ -72,7 +74,8 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
     errorMsg = "";
 
     Timer.run(() {
-      FocusScope.of(context).unfocus();
+//      WidgetsBinding.instance.focusManager.
+      FocusScope.of(context).nearestScope.unfocus();
     });
   }
 
@@ -80,11 +83,13 @@ class _EnterPinScreenState extends State<EnterPinScreen> with VibrationMixin {
   Widget build(BuildContext context) {
     double _width = (MediaQuery.of(context).size.width / 3) - 20;
     double _iconSize = 45;
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: Theme(
-        data: ThemeData.dark(),
-        child: SafeArea(
+    return Theme(
+      data: ThemeData.dark(),
+      child: Scaffold(
+        backgroundColor: widget.backgroundColor != null
+            ? widget.backgroundColor
+            : Theme.of(context).backgroundColor,
+        body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

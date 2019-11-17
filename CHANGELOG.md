@@ -13,3 +13,8 @@
 ## [0.0.4] - 15/10/2019
 
 * Bug Fixes 
+
+
+## [0.0.4] - 17/11/2019
+
+* Bug Fixes - Dark theme support
