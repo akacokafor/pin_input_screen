@@ -1,6 +1,6 @@
 name: pin_input_widget
 description: Flexible Pin Input Screen
-version: 0.0.5
+version: 0.0.6
 author: Okafor Akachukwu <okafor.ak@outlook.com>
 homepage: https://github.com/akacokafor/pin_input_screen
 
@@ -8,7 +8,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter_vector_icons: ^0.1.0
+  flutter_vector_icons: ^0.2.1
   vibrate: ^0.0.4
   flutter:
     sdk: flutter

@@ -18,3 +18,7 @@
 ## [0.0.5] - 17/11/2019
 
 * Bug Fixes - Dark theme support
+
+## [0.0.6] - 07/08/2020
+
+* Upgraded dependencies
